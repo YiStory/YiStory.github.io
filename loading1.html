@@ -1,0 +1,95 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原生js百分比进度条效果</title>
+	<style>
+		*{margin:0;padding:0;list-style:none;}
+		.box{width: 450px; border: 1px solid #2BB7E4; height: 25px;margin:100px auto;}
+		#bar{ display: block;background: #2BB7E4; float: left; height: 100%;text-align: center;line-height: 25px; color: #FFF;} 
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div id="bar" style="width:1%;"></div>
+	</div>
+	<script>
+		var timer = null;
+		var flag = false;
+		window.onload = function(){
+
+			timer = setInterval(function(event){
+				
+					progress();
+					//flag=false;
+				
+				
+			},20);
+
+		}
+		function progress(){
+			if(flag=true){
+				flag=false;
+					var oDiv = document.getElementById("bar");
+				oDiv.style.width =parseInt(oDiv.style.width) + 1 + "%";//parseInt将百分比转为整数，每隔50毫秒加1%
+				oDiv.innerHTML = oDiv.style.width;
+				console.log(parseInt(oDiv.style.width))
+				if(oDiv.style.width == "100%"){
+					clearInterval(timer);
+				}
+			}
+			
+		}
+
+	</script>
+</body>
+</html> -->
+<!-- http://www.qdfuns.com/notes/15546/419590ec2e39d21141909332b3e890cb -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>loading</title>
+
+	<style type="text/css">
+		*{margin:0;padding:0;list-style:none;}
+		.box{
+			width: 450px;
+			height: 25px;
+			border: 1px solid blue;
+			margin: 100px auto;
+		}
+		#bar{
+			display: block;
+			height: 100%;
+			float: left;
+			background: blue;
+			color: white;
+			text-align: center;
+			line-height: 25px;
+		}
+	</style>
+
+	<script type="text/javascript">
+		function loading(){
+			var barDiv = document.getElementById("bar");
+			var p = parseInt(barDiv.style.width);
+			if(p<100){
+			barDiv.style.width = p+1+"%";
+			barDiv.innerHTML=barDiv.style.width;
+			}
+		}
+		window.onload = function(){
+			var timer = setInterval(function(event){
+				loading();
+			},20);
+
+		} 
+	</script>
+</head>
+<body>
+	<div class="box">
+		<div id="bar" style="width: 1%"></div>
+	</div>
+</body>
+</html>
